@@ -54,3 +54,4 @@ Todo
 ----
 
 1. Figure out generic and fallback SSL rules.
+2. Figure out how to remove index.php or front controller pattern (http://www.farinspace.com/codeigniter-nginx-rewrite-rules/)
