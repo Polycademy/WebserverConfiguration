@@ -3,27 +3,38 @@
 # Choose between www and non-www, listen on the *wrong* one and redirect to
 # the right one -- http://wiki.nginx.org/Pitfalls#Server_Name
 server {
+
   # don't forget to tell on which port this server listens
   listen 80;
+  listen [::]:80 ipv6only=on;
+  listen 443 ssl;
+  listen [::]:443 ipv6only=on;
 
   # listen on the www host
   server_name www.example.com;
 
   # and redirect to the non-www host (declared below)
   return 301 $scheme://example.com$request_uri;
+
 }
 
 server {
   
-  # listen 80 default_server deferred; # for Linux
-  # listen 80 default_server accept_filter=httpready; # for FreeBSD
-  listen 80 default_server;
+  #ipv4 and ipv6
+  listen 80;
+  listen [::]:80 ipv6only=on;
+  listen 443 ssl;
+  listen [::]:443 ipv6only=on;
 
-  # The host name to respond to, this will require mapping hostname to ip address on dev server
-  server_name example.com;
+  # Accessible from http://example.com, this will require mapping hostname to ip address on dev server
+  # Also specifies all subdomains
+  server_name example.com *.example.com;
 
   # Path for static files
   root /www/example.com/;
+
+  # Index search file to serve if in a directory
+  index index.html index.htm;
 
   #Specify a charset
   charset utf-8;
@@ -34,5 +45,23 @@ server {
 
   # Include the recommended base config
   include conf.d/base.conf;
+
+  # Force ssl
+  # if ($ssl_protocol = "") {
+  #   return 301 https://example.com$request_uri;
+  # }
+
+  # Try to get the file, or directory and fallback on the front controller pattern
+  # location / {
+  #   try_files $uri $uri/ /index.php;
+  # }
+
+  # You need to specify what the CGI proxy will be, this example uses PHP
+  # To prevent execution of non php files. We check if the $uri is there, and if so, return 404
+  # location ~* \.php$ {
+  #   include fastcgi.conf;
+  #   try_files $uri =404;
+  #   fastcgi_pass unix:/tmp/php-fpm.sock;
+  # }
 
 }

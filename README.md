@@ -49,3 +49,8 @@ Each project repository should have its own sites-available configuration. Curre
 ```bash
 ln -s `pwd`/sites-available/example.com NGINX_ROOT/sites-enabled/example.com
 ```
+
+Todo
+----
+
+1. Figure out generic and fallback SSL rules.
