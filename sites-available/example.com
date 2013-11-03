@@ -14,22 +14,25 @@ server {
 }
 
 server {
+  
   # listen 80 default_server deferred; # for Linux
   # listen 80 default_server accept_filter=httpready; # for FreeBSD
   listen 80 default_server;
 
-  # The host name to respond to
+  # The host name to respond to, this will require mapping hostname to ip address on dev server
   server_name example.com;
 
   # Path for static files
-  root /sites/example.com/public;
+  root /www/example.com/;
 
   #Specify a charset
   charset utf-8;
 
-  # Custom 404 page
-  error_page 404 /404.html;
+  # Custom error pages, this should be handled on the app layer
+  # error_page 404 /404.html;
+  # error_page 500 502 503 504 /50x.html;
 
-  # Include the component config parts for h5bp
-  include conf/h5bp.conf;
+  # Include the recommended base config
+  include conf.d/base.conf;
+
 }
