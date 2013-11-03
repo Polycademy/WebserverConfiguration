@@ -1,7 +1,4 @@
-# www to non-www redirect -- duplicate content is BAD:
-# https://github.com/h5bp/html5-boilerplate/blob/5370479476dceae7cc3ea105946536d6bc0ee468/.htaccess#L362
-# Choose between www and non-www, listen on the *wrong* one and redirect to
-# the right one -- http://wiki.nginx.org/Pitfalls#Server_Name
+# convert www to non-www redirect
 server {
 
   # don't forget to tell on which port this server listens
@@ -34,7 +31,8 @@ server {
   root /www/example.com/;
 
   # Index search file to serve if in a directory
-  index index.html index.htm;
+  # Example uses php
+  index index.php index.html index.htm;
 
   #Specify a charset
   charset utf-8;
@@ -59,9 +57,10 @@ server {
   # You need to specify what the CGI proxy will be, this example uses PHP
   # To prevent execution of non php files. We check if the $uri is there, and if so, return 404
   # location ~* \.php$ {
-  #   include fastcgi.conf;
+  #   include fastcgi_params;
   #   try_files $uri =404;
-  #   fastcgi_pass unix:/tmp/php-fpm.sock;
+  #   fastcgi_pass unix:/var/run/php5-fpm.sock;
+  #   fastcgi_index index.php;
   # }
 
 }
