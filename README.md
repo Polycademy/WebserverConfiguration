@@ -3,7 +3,19 @@ Polycademy's NGINX Configuration
 
 Upstream from H5BP: [Nginx Server Configs](https://github.com/h5bp/server-configs-nginx)
 
+NGINX configuration for Linux servers. Can also work for Mac or Windows, just make sure to change any absolute paths.
+
 This NGINX configuration works for one instance of NGINX. For multiple applications that have different global configurations in the conf.d or different mime.types or different nginx.conf, you should use some virtualisation to isolate the NGINX instances such as Docker and Dokku. However if the global configuration stays the same, and you're just adding another site to the same server, then just symlink each site's sites-available into the NGINX sites-enabled.
+
+All include paths specified inside nginx.conf are relative paths to nginx.conf, so it this works with NGINX > 0.6.7. http://wiki.nginx.org/CoreModule#include
+
+The nginx.conf file is the main configuration file for NGINX.
+
+The mimes.types folder hosts all the mime types of files that can be served.
+
+The conf.d folder hosts modularised global configuration of the server. Enable what you want in the enabled.conf. You can also add your own configuration modules.
+
+The sites-available folder hosts all site specific configuration. Index the file names by their domain name. "example.com" would server both "www.example.com and example.com". You can also add configuration specific to subdomains such as "test.example.com".
 
 Global Configuration (Done Once)
 --------------------------------
