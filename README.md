@@ -21,6 +21,8 @@ This configuration uses the "www-data" user. Make sure this user exists, and set
 
 The example.com configuration expects there to be a root www folder at "/www", this will contain all web source code and static files.
 
+The fast cgi configuration in example.com assumes there is a default fastcgi_params file at NGINX root. http://wiki.nginx.org/PHPFcgiExample
+
 Global Configuration (Done Once)
 --------------------------------
 
