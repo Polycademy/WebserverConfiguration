@@ -83,6 +83,7 @@ server {
   # This example uses PHP
   # To prevent execution of non php files. We check if the $uri is there, and if so, return 404
   # PATH_INFO and PATH_TRANSLATED may not exist in the standard fastcgi_params
+  # Make sure PHP-FPM is listening via a Unix Domain Socket at /var/run/php5-fpm.sock
   location ~* \.php$ {
     try_files $uri =404;
     fastcgi_split_path_info (.+\.php)(.*)$;
@@ -92,6 +93,7 @@ server {
     include fastcgi_params;
     fastcgi_pass unix:/var/run/php5-fpm.sock;
     fastcgi_index index.php;
+    fastcgi_intercept_errors on;
   }
 
 }
