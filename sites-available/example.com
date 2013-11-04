@@ -49,21 +49,47 @@ server {
   #   return 301 https://example.com$request_uri;
   # }
 
-  # Try to get the file, or directory and fallback on the front controller pattern
-  # location / {
-  #   try_files $uri $uri/ /index.php;
-  # }
+  # Removes the initial index or index.php
+  # Changes example.com/index.php to example.com/
+  # Changes example.com/index to example.com/
+  if ($request_uri ~* ^(/index(.php)?)/?$) {
+    rewrite ^(.*)$ / permanent;
+  }
 
-  # You need to specify what the CGI proxy will be, this example uses PHP
+  # Removes the index method of every controller
+  # Changes example.com/controller/index to example.com/lol
+  # Changes example.com/controller/index/ to example.com/lol
+  if ($request_uri ~* index/?$) {
+    rewrite ^/(.*)/index/?$ /$1 permanent;
+  }
+
+  # Removes any trailing slashes from uris that are not directories
+  # Changes example.com/controller/ to example.com/controller
+  # Thus normalising the uris
+  if (!-d $request_filename) {
+    rewrite ^/(.+)/$ /$1 permanent;
+  }
+
+  # Send all requests that are not going to a file, directory or symlink to front controllers
+  if (!-e $request_filename) {
+    rewrite ^/(.*)$ /index.php?/$1 last;
+  }
+
+  # Try to get the file, or directory and fallback on the front controller pattern
+  location / {
+    try_files $uri $uri/ /index.php?$args;
+  }
+
+  # This example uses PHP
   # To prevent execution of non php files. We check if the $uri is there, and if so, return 404
-  # location ~* \.php$ {
-  #   include fastcgi_params;
-  #   try_files $uri =404;
-  #   fastcgi_pass unix:/var/run/php5-fpm.sock;
-  #   fastcgi_index index.php;
-  #   fastcgi_split_path_info (.+\.php)(.*)$;
-  #   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-  #   fastcgi_param PATH_INFO $fastcgi_script_name;
-  # }
+  location ~* \.php$ {
+    include fastcgi_params;
+    try_files $uri =404;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_split_path_info (.+\.php)(.*)$;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param PATH_INFO $fastcgi_script_name;
+  }
 
 }
