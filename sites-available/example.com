@@ -2,10 +2,8 @@
 server {
 
   # don't forget to tell on which port this server listens
-  listen 80;
-  listen [::]:80 ipv6only=on;
-  listen 443 ssl;
-  listen [::]:443 ipv6only=on;
+  listen [::]:80;
+  listen [::]:443 ssl;
 
   # listen on the www host
   server_name www.example.com;
@@ -18,10 +16,8 @@ server {
 server {
   
   #ipv4 and ipv6
-  listen 80;
-  listen [::]:80 ipv6only=on;
-  listen 443 ssl;
-  listen [::]:443 ipv6only=on;
+  listen [::]:80;
+  listen [::]:443 ssl;
 
   # Accessible from http://example.com, this will require mapping hostname to ip address on dev server
   # Also specifies all subdomains
