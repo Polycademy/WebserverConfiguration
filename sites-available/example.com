@@ -88,14 +88,16 @@ server {
   }
 
   # This example uses PHP
-  # To prevent execution of non php files. We check if the $uri is there, and if so, return 404
-  # PATH_INFO and PATH_TRANSLATED may not exist in the standard fastcgi_params
+  # PATH_INFO may not exist in the standard fastcgi_params
   # Make sure PHP-FPM is listening via a Unix Domain Socket at /var/run/php5-fpm.sock
   location ~* \.php$ {
+    # Prevent uploaded file execution exploit
+    # This won't work if the uploaded files are on a different server
+    # Comment the try_files if the php-fpm is on another machine
+    # https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/
     try_files $uri =404;
     fastcgi_split_path_info (.+\.php)(.*)$;
     fastcgi_param PATH_INFO $fastcgi_path_info;
-    fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include fastcgi_params;
     fastcgi_pass unix:/var/run/php5-fpm.sock;
