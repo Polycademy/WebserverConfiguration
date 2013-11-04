@@ -1,8 +1,9 @@
 # convert www to non-www redirect
 server {
 
-  # don't forget to tell on which port this server listens
+  listen 80;
   listen [::]:80;
+  listen 443 ssl;
   listen [::]:443 ssl;
 
   # listen on the www host
@@ -16,7 +17,9 @@ server {
 server {
   
   #ipv4 and ipv6
+  listen 80;
   listen [::]:80;
+  listen 443 ssl;
   listen [::]:443 ssl;
 
   # Accessible from http://example.com, this will require mapping hostname to ip address on dev server
