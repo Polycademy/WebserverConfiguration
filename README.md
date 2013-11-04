@@ -17,11 +17,22 @@ The conf.d folder hosts modularised global configuration of the server. These ar
 
 The sites-available folder hosts all site specific configuration. Index the file names by their domain name. "example.com" would server both "www.example.com and example.com". You can also add configuration specific to subdomains such as "test.example.com".
 
-This configuration uses the "www-data" user. Make sure this user exists, and set the appropriate permissions in the default www directory.
+Once you have setup your server name to match your desired domain name, you may need to manpulate your hosts file. If you are still in development, you should create virtual hosts inside your hosts pointing back to 127.0.0.1. Then the server_name will be used to decide which server block to use.
+
+In order to use example.com, one would write this:
+
+```
+# Virtual Hosts inside etc/hosts
+127.0.0.1 example.com www.example.com
+```
+
+In production you should remove those virtual hosts, since a bought domain name will work normally when routed to your server's external ip address.
+
+This configuration uses the "www-data" user. Make sure this user exists, and set the appropriate permissions in the default www directory. Such as `chown -R www-data:www-data /www`. Confirm that the owner has read, write and execute permissions.
 
 The example.com configuration expects there to be a root www folder at "/www", this will contain all web source code and static files.
 
-The fast cgi configuration in example.com assumes there is a default fastcgi_params file at NGINX root. http://wiki.nginx.org/PHPFcgiExample
+Becareful with the uploaded file execution exploit: https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/
 
 Global Configuration (Done Once)
 --------------------------------
