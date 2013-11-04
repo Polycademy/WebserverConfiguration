@@ -13,7 +13,7 @@ The nginx.conf file is the main configuration file for NGINX.
 
 The mimes.types folder hosts all the mime types of files that can be served.
 
-The conf.d folder hosts modularised global configuration of the server. Enable what you want in the base.conf. You can also add your own configuration modules. The base.conf is loaded by the site specific configuration, some sites may want different kinds of modules.
+The conf.d folder hosts modularised global configuration of the server. These are included in site-specific configuration. You can also add your own configuration modules.
 
 The sites-available folder hosts all site specific configuration. Index the file names by their domain name. "example.com" would server both "www.example.com and example.com". You can also add configuration specific to subdomains such as "test.example.com".
 
