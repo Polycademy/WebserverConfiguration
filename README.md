@@ -41,7 +41,7 @@ Global Configuration (Done Once)
 
 ```bash
 cp nginx.conf NGINX_ROOT/nginx.conf
-cp mimes.types NGINX_ROOT/mimes.types
+cp mime.types NGINX_ROOT/mime.types
 ```
 
 2. Copy from conf.d to the NGINX root's conf.d
