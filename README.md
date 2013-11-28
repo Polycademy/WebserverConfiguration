@@ -17,13 +17,13 @@ The conf.d folder hosts modularised global configuration of the server. These ar
 
 The sites-available folder hosts all site specific configuration. Index the file names by their domain name. "example.com" would server both "www.example.com and example.com". You can also add configuration specific to subdomains such as "test.example.com".
 
-Once you have setup your server name to match your desired domain name, you may need to manpulate your hosts file. If you are still in development, you should create virtual hosts inside your hosts pointing back to 127.0.0.1. Then the server_name will be used to decide which server block to use.
+Once you have setup your server name to match your desired domain name, you may need to manipulate your hosts file. If you are still in development, you should create virtual hosts inside your hosts file pointing back to 127.0.0.1. Then the server_name will be used to decide which server block to use.
 
-In order to use example.com, one would write this:
+In order to use example.com on the development server, one would write this:
 
 ```
 # Virtual Hosts inside etc/hosts
-127.0.0.1 example.com www.example.com
+127.0.0.1 dev.example.com
 ```
 
 In production you should remove those virtual hosts, since a bought domain name will work normally when routed to your server's external ip address.
@@ -67,3 +67,4 @@ Todo
 ----
 
 1. Figure out generic and fallback SSL rules.
+2. Refer to here for WS and WSS and Subdomain Rules: http://siriux.net/2013/06/nginx-and-websockets/

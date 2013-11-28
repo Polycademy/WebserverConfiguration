@@ -22,8 +22,8 @@ server {
   listen 443 ssl;
   listen [::]:443 ssl;
 
-  # The host name to respond to, this will require mapping hostname to ip address on dev server
-  server_name phpexample.com;
+  # The host name to respond to, map only the dev hostname to ip address on dev server
+  server_name phpexample.com dev.phpexample.com;
 
   # Path for static files
   root /www/phpexample;
