@@ -175,7 +175,7 @@ AddDefaultCharset utf-8
 # ##############################################################################
 
 # ------------------------------------------------------------------------------
-# | Suppressing / Forcing the "www." at the beginning of URLs                  |
+# | Suppressing the "www." at the beginning of URLs                  |
 # ------------------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
