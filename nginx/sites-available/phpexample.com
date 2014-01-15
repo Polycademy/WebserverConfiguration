@@ -17,6 +17,17 @@ server {
 # php application
 server {
 
+  # for linux (http://www.techrepublic.com/article/take-advantage-of-tcp-ip-options-to-optimize-data-transmission/)
+  #listen 80 deferred;
+  #listen [::]:80 deferred;
+  #listen 443 deferred ssl;
+  #listen [::]:443 deferred ssl;
+  # for FreeBSD (http://www.freebsd.org/cgi/man.cgi?accf_http)
+  #listen 80 accept_filter=httpready;
+  #listen [::]:80 accept_filter=httpready;
+  #listen 443 accept_filter=httpready ssl;
+  #listen [::]:443 accept_filter=httpready ssl;
+  # for standard
   listen 80;
   listen [::]:80;
   listen 443 ssl;
@@ -27,6 +38,14 @@ server {
 
   # Path for static files
   root /www/phpexample;
+
+  # SSL settings
+  #ssl_certificate      phpexample.com.crt;
+  #ssl_certificate_key  phpexample.com.key;
+  # Force ssl
+  #if ($ssl_protocol = "") {
+  #  return 301 https://phpexample.com$request_uri;
+  #}
 
   # Index search file to serve if in a directory
   index index.php index.html index.htm;
@@ -44,11 +63,6 @@ server {
   include conf.d/cross-domain-ajax.conf;
   # Uncomment this to prevent mobile network providers from modifying your site 
   # include conf.d/no-transform.conf;
-
-  # Force ssl
-  # if ($ssl_protocol = "") {
-  #   return 301 https://phpexample.com$request_uri;
-  # }
 
   # Removes the initial index or index.php
   # Changes example.com/index.php to example.com/
