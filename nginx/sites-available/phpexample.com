@@ -9,6 +9,11 @@ server {
   # listen on the www host
   server_name www.phpexample.com;
 
+  # SSL Settings
+  #keepalive_timeout 70;
+  #ssl_certificate      phpexample.com.crt;
+  #ssl_certificate_key  phpexample.com.key;
+
   # and redirect to the non-www host (declared below)
   return 301 $scheme://phpexample.com$request_uri;
 
@@ -39,13 +44,15 @@ server {
   # Path for static files
   root /www/phpexample;
 
-  # SSL settings
-  #ssl_certificate      phpexample.com.crt;
-  #ssl_certificate_key  phpexample.com.key;
-  # Force ssl
+  # Force SSL
   #if ($ssl_protocol = "") {
   #  return 301 https://phpexample.com$request_uri;
   #}
+
+  # SSL settings
+  #keepalive_timeout 70;
+  #ssl_certificate      phpexample.com.crt;
+  #ssl_certificate_key  phpexample.com.key;
 
   # Index search file to serve if in a directory
   index index.php index.html index.htm;
