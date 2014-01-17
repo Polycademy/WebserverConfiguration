@@ -65,6 +65,14 @@ Each project repository should have its own sites-available configuration. Curre
 ln -s `pwd`/sites-available/example.com NGINX_ROOT/sites-enabled/example.com
 ```
 
+NGINX by default comes with a default site specific configuration. You should replace that with the no-default configuration supplied in the current sites-available. This prevents having a default site which should not be available for production web applications.
+
+```bash
+rm NGINX_ROOT/sites-enabled/default
+cp sites-available/no-default NGINX_ROOT/sites-available/no-default
+ln -s NGINX_ROOT/sites-available/no-default NGINX_ROOT/sites-enabled/no-default
+```
+
 SSL Configuration
 -----------------
 
