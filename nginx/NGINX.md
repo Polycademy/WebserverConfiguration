@@ -79,7 +79,7 @@ Development Configuration
 During development, you should switch off the cache-file-descriptors.conf file. The `open_file_cache` directives will cache your files during the HTTP cycle, so you won't see the latest updates to your source code. This is located in your per site configuration file, simply comment out this directive:
 
 ```
-  include conf.d/cache-file-descriptors.conf;
+  #include conf.d/cache-file-descriptors.conf;
 ```
 
 SSL Configuration
