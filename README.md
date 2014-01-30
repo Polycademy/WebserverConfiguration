@@ -12,3 +12,5 @@ These configuration files are based off the H5BP project, however they have been
 TODO:
 
 1. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
+
+2. http://en.m.wikipedia.org/wiki/HTTP_Strict_Transport_Security
