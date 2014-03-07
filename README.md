@@ -14,3 +14,5 @@ TODO:
 1. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
 
 2. http://en.m.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+
+3. https://github.com/zendtech/ZendOptimizerPlus/issues/126#issuecomment-24020445 For Capistrano and Rocketeer and OpCode Cache
