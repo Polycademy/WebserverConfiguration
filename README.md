@@ -16,3 +16,5 @@ TODO:
 2. http://en.m.wikipedia.org/wiki/HTTP_Strict_Transport_Security
 
 3. https://github.com/zendtech/ZendOptimizerPlus/issues/126#issuecomment-24020445 For Capistrano and Rocketeer and OpCode Cache
+
+4. https://www.exratione.com/2014/03/running-nginx-as-a-non-root-user/ Non root user
