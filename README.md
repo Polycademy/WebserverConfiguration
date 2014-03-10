@@ -9,6 +9,8 @@ NGINX also has the advantage of a much more elegant syntax, making it actually f
 
 These configuration files are based off the H5BP project, however they have been enhanced to be a bit more opinionated for Polycademy's usage.
 
+The NGINX files are updated more often than Apache.
+
 TODO:
 
 1. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
@@ -18,3 +20,7 @@ TODO:
 3. https://github.com/zendtech/ZendOptimizerPlus/issues/126#issuecomment-24020445 For Capistrano and Rocketeer and OpCode Cache
 
 4. https://www.exratione.com/2014/03/running-nginx-as-a-non-root-user/ Non root user
+
+Test this one out for SSL settings: #add_header Strict-Transport-Security max-age=63072000;
+
+3. Add SPDY support to NGINX http://nginx.org/en/docs/http/ngx_http_spdy_module.html (Will require custom build of NGINX and recent OpenSSL extension)
