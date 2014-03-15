@@ -68,6 +68,7 @@ server {
   include conf.d/cache-file-descriptors.conf;
   include conf.d/cross-domain-fonts.conf;
   include conf.d/cross-domain-ajax.conf;
+  include conf.d/buffers.conf;
   # Uncomment this to prevent mobile network providers from modifying your site 
   # include conf.d/no-transform.conf;
 
@@ -156,6 +157,7 @@ server {
   # include conf.d/cache-file-descriptors.conf;
   include conf.d/cross-domain-fonts.conf;
   include conf.d/cross-domain-ajax.conf;
+  include conf.d/buffers.conf;
   # Uncomment this to prevent mobile network providers from modifying your site 
   # include conf.d/no-transform.conf;
 
