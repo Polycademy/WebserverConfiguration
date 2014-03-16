@@ -24,3 +24,9 @@ TODO:
 Test this one out for SSL settings: #add_header Strict-Transport-Security max-age=63072000;
 
 3. Add SPDY support to NGINX http://nginx.org/en/docs/http/ngx_http_spdy_module.html (Will require custom build of NGINX and recent OpenSSL extension)
+
+4. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
+
+5. Because HTML templates are now precompiled and added to the js files, you do not need to actually add HTML to the expires module. HTML can still be considered data and hence browser cache required. This means your home page, or default HTML page is always loaded on request, but all subsequent HTML data will be cached along with the javascript file. This means if you change your original HTML layout, browsers will receive the changes immediately and this important if you major changes to your scripts. But your templates remain cached. It's a WIN - WIN!
+
+6. https://gist.github.com/konklone/6532544 (advanced SSL and spdy support)
