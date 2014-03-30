@@ -21,12 +21,12 @@ TODO:
 
 4. https://www.exratione.com/2014/03/running-nginx-as-a-non-root-user/ Non root user
 
-Test this one out for SSL settings: #add_header Strict-Transport-Security max-age=63072000;
+5. Test this one out for SSL settings: #add_header Strict-Transport-Security max-age=63072000;
 
-3. Add SPDY support to NGINX http://nginx.org/en/docs/http/ngx_http_spdy_module.html (Will require custom build of NGINX and recent OpenSSL extension)
+6. Add SPDY support to NGINX http://nginx.org/en/docs/http/ngx_http_spdy_module.html (Will require custom build of NGINX and recent OpenSSL extension)
 
-4. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
+7. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
 
-5. Because HTML templates are now precompiled and added to the js files, you do not need to actually add HTML to the expires module. HTML can still be considered data and hence browser cache required. This means your home page, or default HTML page is always loaded on request, but all subsequent HTML data will be cached along with the javascript file. This means if you change your original HTML layout, browsers will receive the changes immediately and this important if you major changes to your scripts. But your templates remain cached. It's a WIN - WIN!
+8. https://gist.github.com/konklone/6532544 (advanced SSL and spdy support)
 
-6. https://gist.github.com/konklone/6532544 (advanced SSL and spdy support)
+9. Replace default unix domain socket with TCP socket with an upstream component. It's far better! And it's more flexible for the purposes of load balancing. It allows greater scalability, portability and everything. Also works well with exposing via Docker containers if you need to containerise NGINX.
