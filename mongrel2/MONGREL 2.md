@@ -12,6 +12,6 @@ While PHP is generally used in a CGI style. This includes FCGI and FPM. There ar
 
 * PHP-ZMQ https://github.com/mkoppanen/php-zmq
 * m2php https://github.com/winks/m2php
-* React http://reactphp.org/
+* React http://reactphp.org/ & php-pm https://github.com/marcj/php-pm
 * Photon http://www.photon-project.com/index.html
 * AMP https://github.com/rdlowrey/Amp
