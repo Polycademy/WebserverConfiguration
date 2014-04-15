@@ -19,3 +19,4 @@ TODO:
 5. NGINX non-root user https://www.exratione.com/2014/03/running-nginx-as-a-non-root-user/
 6. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
 7. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
+8. Add proxy and uwsgi styles to NGINX.
