@@ -15,3 +15,9 @@ While PHP is generally used in a CGI style. This includes FCGI and FPM. There ar
 * React http://reactphp.org/ & php-pm https://github.com/marcj/php-pm
 * Photon http://www.photon-project.com/index.html
 * AMP https://github.com/rdlowrey/Amp
+
+For Javascript
+--------------
+
+* m2node https://github.com/dan-manges/m2node
+* zeromq.node https://github.com/JustinTulloss/zeromq.node
