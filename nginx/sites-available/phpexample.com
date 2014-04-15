@@ -9,7 +9,7 @@ upstream php_server {
   # this will not work for internal facing applications because not the all IP is checked
   # this is only useful if you have sessions that are not shared between backends
   # if you do not need sessions, or that your sessions are shared, then this is not required
-  ip_hash;
+  #ip_hash;
 
   # backend keepalive connections limit, this number is dependent on your memory vs speed tradeoff
   # if you have many kept alive connections, this will consume memory, however you do not need to 
@@ -17,8 +17,8 @@ upstream php_server {
   # however, this memory increase may not be justifiable if your upstream is local to NGINX
   # the overhead of TCP connections will much lower, but you'll still have the memory increase
   # this is more useful for clustered setups where upstream may be hosted remotely and when there
-  # is a lot of requests
-  # for now it's disabled because of bug in PHP-FPM http://forum.nginx.org/read.php?2,235956,235956#msg-235956
+  # is a lot of requests. In terms of PHP, this number should be equal to the max children in FPM.
+  # for now it's disabled because of this bug in PHP-FPM http://forum.nginx.org/read.php?2,235956,235956#msg-235956
   #keepalive 32;
 
 }
