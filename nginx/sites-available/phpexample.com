@@ -1,3 +1,26 @@
+# Upstream PHP server, using TCP is more flexible than Domain Sockets
+# Make sure that PHP-FPM is listening on a TCP port and not a Unix Domain Socket
+upstream php_server {
+
+  # clustered PHP-FPM setups need to have a shared session solution
+  server 127.0.0.1:9000;
+
+  # choose the least used server
+  least_conn;
+  # make sure the same client goes to the same server
+  ip_hash;
+  # backend keepalive connections limit, this number is dependent on your memory vs speed tradeoff
+  # if you have many kept alive connections, this will consume memory, however you do not need to 
+  # recreate TCP connections everytime to your backend unless you exhaust the number limit
+  # however, this memory increase may not be justifiable if your upstream is local to NGINX
+  # the overhead of TCP connections will much lower, but you'll still have the memory increase
+  # this is more useful for clustered setups where upstream may be hosted remotely and when there
+  # is a lot of requests
+  # for now it's disabled because of bug in PHP-FPM http://forum.nginx.org/read.php?2,235956,235956#msg-235956
+  #keepalive 32 single;
+
+}
+
 # Convert www to non-www redirect 
 server {
 
@@ -196,10 +219,12 @@ server {
   location ~* \.php$ {
     try_files $uri =404;
     include fastcgi_params;
-    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_pass php_server;
     fastcgi_index index.php;
     fastcgi_intercept_errors on;
     fastcgi_hide_header x-powered-by;
+    fastcgi_keep_conn on;
+    fastcgi_next_upstream error timeout;
   }
 
 }
