@@ -1,5 +1,5 @@
 Polycademy's APACHE Configuration
-================================
+=================================
 
 To understand how the .htaccess file works, first you should check out H5BP's explanation: https://github.com/h5bp/html5-boilerplate/blob/master/doc/TOC.md
 

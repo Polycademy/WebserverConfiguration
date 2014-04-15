@@ -3,11 +3,11 @@ Polycademy's NGINX Configuration
 
 Upstream from H5BP: [Nginx Server Configs](https://github.com/h5bp/server-configs-nginx)
 
-NGINX configuration for Linux servers. Can also work for Mac or Windows, absolute paths and some unix specific configuration need to be changed. Best to test it before deploying!
+Minimum Version Requirement: NGINX 1.1.4
+
+NGINX configuration for Linux servers. Assumes the open source branch of NGINX, there is no NGINX plus directives. Can also work for Mac or Windows, absolute paths and some unix specific configuration need to be changed. Best to test it before deploying!
 
 This NGINX configuration works for one instance of NGINX. For multiple applications that have different global configurations in the conf.d or different mime.types or different nginx.conf, you should use some virtualisation to isolate the NGINX instances such as Docker and Dokku. However if the global configuration stays the same, and you're just adding another site to the same server, then just symlink each site's sites-available into the NGINX sites-enabled.
-
-All file paths specified inside nginx.conf and any includes are relative paths to nginx.conf, so it this works with NGINX > 0.6.7. http://wiki.nginx.org/CoreModule#include It can also work with absolute paths.
 
 The nginx.conf file is the main configuration file for NGINX.
 
@@ -91,7 +91,7 @@ Certificate chains need to be concatenated into one certificate. They are not sp
 
 Multiple SSL certificates can be a problem for older browsers due them not supporting Server Name identification (SNI). The most reliable solution is for each website to listen to a different IP address. However this will not be a problem once people stop using Windows XP.
 
-Todo
-----
+TCP Stack Tuning
+----------------
 
-1. Refer to here for WS and WSS and Subdomain Rules: http://siriux.net/2013/06/nginx-and-websockets/
+See: http://dak1n1.com/blog/12-nginx-performance-tuning
