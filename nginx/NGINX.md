@@ -39,11 +39,12 @@ Becareful with the uploaded file execution exploit: https://nealpoole.com/blog/2
 Global Configuration (Done Once)
 --------------------------------
 
-1. Copy nginx.conf and mime.types over to NGINX root
+1. Copy nginx.conf, mime.types and fastcgi_params over to NGINX root
 
 ```bash
 cp nginx.conf NGINX_ROOT/nginx.conf
 cp mime.types NGINX_ROOT/mime.types
+cp fastcgi_params NGINX_ROOT/fastcgi_params
 ```
 
 2. Copy from conf.d to the NGINX root's conf.d
