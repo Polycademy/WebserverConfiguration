@@ -51,6 +51,7 @@ types {
 
 # Web feeds
   application/xml                       atom rdf rss xml;
+  application/x-yaml                    yaml;
 
 # Web fonts
   application/font-woff                 woff;
@@ -88,6 +89,8 @@ types {
   application/x-x509-ca-cert            der pem crt;
   application/x-bittorrent              torrent;
   application/zip                       zip;
+  application/x-bzip2                   bz2;
+  application/x-gzip                    gz;
 
   application/octet-stream              bin exe dll;
   application/octet-stream              deb;
