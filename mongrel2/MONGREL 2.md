@@ -25,10 +25,18 @@ The conf file is loaded into m2sh to create a sqlite database. This is the datab
 m2sh load -db path/to/server.sqlite -config server.conf
 # Show available servers
 m2sh servers -db path/to/server.sqlite
-# Show available hosts
-m2sh hosts -db path/to/server.sqlite
-# Start all servers
+# Show available hosts on a particular server
+m2sh hosts -db path/to/server.sqlite -server http_server
+m2sh hosts -db path/to/server.sqlite -server https_server
+# Start all servers (sudo is required to bind to 80 or 443, then it drops permissions)
 m2sh start -db path/to/server.sqlite -every -sudo
+# Check what's listening
+sudo lsof -i :80
+sudo lsof -i :443
+m2sh running -every
+# Hook into the control port
+# You can check the tasks and control servers individually, see http://mongrel2.org/manual/book-finalch4.html#x6-390003.8
+sudo m2sh control -every
 # Stop all servers
 m2sh stop -db path/to/server.sqlite -every -murder
 ```
@@ -40,8 +48,10 @@ SSL Configuration
 
 By default SSL configuration is disabled in the server.conf with the commented out sections. If you want to activate SSL, you need to create the certificate and key, their names must match the UUID of the Mongrel 2 server you're enabling SSL for. So if UUID of the server is "ssl_server", then the files must be `ssl_server.crt` and `ssl_server.key`.
 
-For PHP
--------
+Handlers
+--------
+
+### PHP
 
 While PHP is generally used in a CGI style. This includes FCGI and FPM. There are solutions to make PHP long running worker daemon!
 
@@ -51,8 +61,8 @@ While PHP is generally used in a CGI style. This includes FCGI and FPM. There ar
 * Photon http://www.photon-project.com/index.html
 * AMP https://github.com/rdlowrey/Amp
 
-For Javascript
---------------
+### Node
 
 * m2node https://github.com/dan-manges/m2node
 * zeromq.node https://github.com/JustinTulloss/zeromq.node
+* pm2
