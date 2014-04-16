@@ -18,6 +18,21 @@ Each configuration will have to be customised for your specific project. Mainly 
 
 The conf file is loaded into m2sh to create a sqlite database. This is the database that Mongrel 2 runs from.
 
+```sh
+# Load the conf into sqlite db
+m2sh load -db path/to/server.sqlite -config server.conf
+# Show available servers
+m2sh servers -db path/to/server.sqlite
+# Show available hosts
+m2sh hosts -db path/to/server.sqlite
+# Start all servers
+m2sh start -db path/to/server.sqlite -every -sudo
+# Stop all servers
+m2sh stop -db path/to/server.sqlite -every -murder
+```
+
+If you run m2sh where sqlite database exists at the working directory, you can omit the `-db path/to/server.sqlite` option.
+
 SSL Configuration
 -----------------
 
