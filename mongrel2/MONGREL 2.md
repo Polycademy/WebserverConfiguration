@@ -5,11 +5,13 @@ Mongrel 2 is a very unique web server/proxy/load balancer. To understand why it'
 
 Mongrel 2 is fully language agnostic, so there isn't seperate configuration styles for different languages. It does however require you to make your web applications use ZMQ has the transport protocol. This also means you cannot do any kind of CGI. Your web applications that are connected to Mongrel 2 need to be long running daemons. Now in the future, there might some kind of ZMQ to CGI proxy which can allow "CGI" scripts to get involved in the Mongrel 2 stack, but it kind of defeats the purpose of using Mongrel 2.
 
-Mongrel 2 will chroot to a particular directory and drop permissions to the user launching the process. This directory should be your application's root directory. All paths are relative from this directory. Your directory will need to have these folders created, without these, the process will not be created:
+Mongrel 2 will chroot to a particular directory and drop permissions to the user launching the process. This directory should be your application's root directory. All paths are relative from this directory. Your directory will need to have these folders created, without these, the process will not be created. You can of course change the folder paths, but the `conf` file will need to be updated.
 
 ```
 run/ (mongrel 2's pids will be here)
 logs/ (access and error logs will be stored here)
+assets/ (static files)
+assets/index.html (default assets file)
 uploads/ (if providing uploads)
 certs/ (if providing SSL)
 ```
