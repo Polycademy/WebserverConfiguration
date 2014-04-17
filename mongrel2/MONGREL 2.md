@@ -48,6 +48,12 @@ SSL Configuration
 
 By default SSL configuration is disabled in the server.conf with the commented out sections. If you want to activate SSL, you need to create the certificate and key, their names must match the UUID of the Mongrel 2 server you're enabling SSL for. So if UUID of the server is "ssl_server", then the files must be `ssl_server.crt` and `ssl_server.key`.
 
+
+Multiplexing HTTP & HTTPS Traffic
+---------------------------------
+
+At this moment, Mongrel 2 does not support redirects. This means if you want to have HTTPS, you'll need to have 2 handlers, 2 hosts, and 2 servers. Your workers will need to listen on 2 ZMQ sockets. This is possible because although push sockets can only bind to one endpoint, pull sockets can pull from multiple endpoints. See the Javascript example folder.
+
 Handlers
 --------
 
