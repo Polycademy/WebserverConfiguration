@@ -22,14 +22,14 @@ The conf file is loaded into m2sh to create a sqlite database. This is the datab
 
 ```sh
 # Load the conf into sqlite db
-m2sh load -db path/to/server.sqlite -config server.conf
+m2sh load -db path/to/config.sqlite -config server.conf
 # Show available servers
-m2sh servers -db path/to/server.sqlite
+m2sh servers -db path/to/config.sqlite
 # Show available hosts on a particular server
-m2sh hosts -db path/to/server.sqlite -server http_server
-m2sh hosts -db path/to/server.sqlite -server https_server
+m2sh hosts -db path/to/config.sqlite -server http_server
+m2sh hosts -db path/to/config.sqlite -server https_server
 # Start all servers (sudo is required to bind to 80 or 443, then it drops permissions)
-m2sh start -db path/to/server.sqlite -every -sudo
+m2sh start -db path/to/config.sqlite -every -sudo
 # Check what's listening
 sudo lsof -i :80
 sudo lsof -i :443
@@ -38,10 +38,10 @@ m2sh running -every
 # You can check the tasks and control servers individually, see http://mongrel2.org/manual/book-finalch4.html#x6-390003.8
 sudo m2sh control -every
 # Stop all servers
-m2sh stop -db path/to/server.sqlite -every -murder
+m2sh stop -db path/to/config.sqlite -every -murder
 ```
 
-If you run m2sh where sqlite database exists at the working directory, you can omit the `-db path/to/server.sqlite` option.
+If you run m2sh where sqlite database exists at the working directory, you can omit the `-db path/to/config.sqlite` option.
 
 SSL Configuration
 -----------------
