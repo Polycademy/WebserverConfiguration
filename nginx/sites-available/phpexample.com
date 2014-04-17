@@ -9,7 +9,12 @@ upstream php_server {
   # this will not work for internal facing applications because not the all IP is checked
   # this is only useful if you have sessions that are not shared between backends
   # if you do not need sessions, or that your sessions are shared, then this is not required
+  # its highly recommended that you should be sharing your sessions!
   #ip_hash;
+
+  # send connections to the least used upstream
+  # either least_conn or ip_hash can be active, both cannot be simultaneously active
+  least_conn;
 
   # backend keepalive connections limit, this number is dependent on your memory vs speed tradeoff
   # if you have many kept alive connections, this will consume memory, however you do not need to 
