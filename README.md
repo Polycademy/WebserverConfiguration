@@ -20,3 +20,4 @@ TODO:
 6. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
 7. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
 8. Add proxy and uwsgi styles to NGINX.
+9. NGINX Cache Busting is not working.
