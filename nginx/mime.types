@@ -20,10 +20,6 @@ types {
   image/x-icon                          ico cur;
   image/x-jng                           jng;
 
-# JavaScript
-  application/javascript                js;
-  application/json                      json;
-
 # Manifest files
   application/x-web-app-manifest+json   webapp;
   text/cache-manifest                   manifest appcache;
@@ -51,7 +47,6 @@ types {
 
 # Web feeds
   application/xml                       atom rdf rss xml;
-  application/x-yaml                    yaml;
 
 # Web fonts
   application/font-woff                 woff;
@@ -59,6 +54,9 @@ types {
   application/x-font-ttf                ttc ttf;
   font/opentype                         otf;
   image/svg+xml                         svg svgz;
+
+# JavaScript
+
 
 # Other
   application/java-archive              jar war ear;
@@ -99,14 +97,20 @@ types {
   application/octet-stream              msi msp msm;
   application/octet-stream              safariextz;
 
-  text/css                              css;
-  text/html                             html htm shtml;
-  text/mathml                           mml;
-  text/plain                            txt;
   text/vnd.sun.j2me.app-descriptor      jad;
   text/vnd.wap.wml                      wml;
   text/vtt                              vtt;
   text/x-component                      htc;
   text/x-vcard                          vcf;
+  text/mathml                           mml;
+
+  # Common Web
+  text/html                             html htm shtml;
+  text/css                              css;
+  application/javascript                js;
+  text/plain                            txt;
+  application/json                      json;
+  application/yaml                      yaml yml;
+  text/csv                              csv;
 
 }
