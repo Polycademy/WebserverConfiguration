@@ -35,6 +35,9 @@ server {
   listen [::]:80;
   listen 443 ssl;
   listen [::]:443 ssl;
+  # for SPDY support (it must be compiled and only works on SSL)
+  #listen 443 ssl spdy;
+  #listen [::]:443 ssl spdy;
 
   # listen on the www host
   server_name www.phpexample.com;
@@ -43,6 +46,18 @@ server {
   #keepalive_timeout 70;
   #ssl_certificate      phpexample.com.crt;
   #ssl_certificate_key  phpexample.com.key;
+  #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+  # OCSP Stapling (only used with SSL)
+  # While the ssl_certificate above may omit the root cert if the CA is trusted,
+  # ssl_trusted_certificate below must point to a chain of **all** certs
+  # in the trust path - (your cert, intermediary certs, root cert)
+  # We're using Google Public DNS as a resolver for the OCSP responder (but any DNS is fine)
+  #ssl_stapling on;
+  #ssl_stapling_verify on;
+  #resolver 8.8.8.8 8.8.4.4 valid=300;
+  #resolver_timeout 10;
+  #ssl_trusted_certificate phpexample.com.pem;
 
   # and redirect to the non-www host (declared below)
   return 301 $scheme://phpexample.com$request_uri;
@@ -67,6 +82,9 @@ server {
   listen [::]:80;
   listen 443 ssl;
   listen [::]:443 ssl;
+  # for SPDY support (it must be compiled and only works on SSL)
+  #listen 443 ssl spdy;
+  #listen [::]:443 ssl spdy;
 
   # The host name to respond to, map only the dev hostname to ip address on dev server
   server_name phpexample.com;
@@ -81,8 +99,21 @@ server {
 
   # SSL settings
   #keepalive_timeout 70;
-  #ssl_certificate      phpexample.com.crt;
+  #ssl_certificate      phpexample.com.pem;
   #ssl_certificate_key  phpexample.com.key;
+  # HSTS (this makes sure that the client is using HTTPS, even for subdomains)
+  #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+  # OCSP Stapling (only used with SSL)
+  # While the ssl_certificate above may omit the root cert if the CA is trusted,
+  # ssl_trusted_certificate below must point to a chain of **all** certs
+  # in the trust path - (your cert, intermediary certs, root cert)
+  # We're using Google Public DNS as a resolver for the OCSP responder (but any DNS is fine)
+  #ssl_stapling on;
+  #ssl_stapling_verify on;
+  #resolver 8.8.8.8 8.8.4.4 valid=300;
+  #resolver_timeout 10;
+  #ssl_trusted_certificate phpexample.com.pem;
 
   # Index search file to serve if in a directory
   index index.php index.html index.htm;
@@ -157,6 +188,9 @@ server {
   listen [::]:80;
   listen 443 ssl;
   listen [::]:443 ssl;
+  # for SPDY support (it must be compiled and only works on SSL)
+  #listen 443 ssl spdy;
+  #listen [::]:443 ssl spdy;
 
   # The host name to respond to, map only the dev hostname to ip address on dev server
   server_name dev.phpexample.com;
@@ -173,6 +207,9 @@ server {
   #keepalive_timeout 70;
   #ssl_certificate      phpexample.com.crt;
   #ssl_certificate_key  phpexample.com.key;
+  #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+  # OCSP Stapling is not relevant on development servers
 
   # Index search file to serve if in a directory
   index index.php index.html index.htm;

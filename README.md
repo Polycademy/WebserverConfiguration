@@ -12,12 +12,9 @@ The NGINX and Mongrel 2 files are updated more often than Apache.
 TODO:
 ----
 
-1. NGINX WebSockets support http://siriux.net/2013/06/nginx-and-websockets/
-2. NGINX SPDY support http://nginx.org/en/docs/http/ngx_http_spdy_module.html & https://gist.github.com/konklone/6532544
-3. HSTS Support http://en.m.wikipedia.org/wiki/HTTP_Strict_Transport_Security & Test this one out for SSL settings: #add_header Strict-Transport-Security max-age=63072000;
+1. NGINX WebSockets support http://siriux.net/2013/06/nginx-and-websockets/ (this is just a proxy form, we need to have separate file examples)
 4. Opcode Cache Issue (Capistrano + Rocketeer) https://github.com/zendtech/ZendOptimizerPlus/issues/126#issuecomment-24020445
 5. NGINX non-root user https://www.exratione.com/2014/03/running-nginx-as-a-non-root-user/
-6. Add YAML content type to be gzipped/compressed. Also add it to Expires module as data. Could also add binary JSON too.
 7. How to redirect any mention of index.php to non index.php routes. Such as http://e.com/index.php/blah to http://e.com/blah. To force an external rewrite, we have to do a redirect.
 8. Add proxy and uwsgi styles to NGINX.
-9. NGINX Cache Busting is not working.
+9. NGINX Cache Busting is not working. (rebuild NGINX from source)
