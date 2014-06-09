@@ -1,0 +1,23 @@
+language: php
+
+php: [5.6]
+
+matrix:
+  fast_finish: true
+
+before_install:
+  - sudo apt-get update
+  - composer self-update
+
+install:
+  - sudo scripts/install_servers.sh
+  - composer install --dev
+
+before_script:
+  - sudo scripts/start_servers.sh
+
+script: bin/codecept run --debug
+
+branches:
+  only:
+    - master

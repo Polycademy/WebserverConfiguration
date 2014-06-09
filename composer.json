@@ -1,0 +1,15 @@
+{
+    "license": "MIT",
+    "authors": [{
+        "name": "Roger Qiu",
+        "email": "roger.qiu@polycademy.com",
+        "homepage": "http://polycademy.com",
+        "role": "Founder and Developer"
+    }],
+    "require-dev": {
+        "codeception/codeception": "~2.0"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}

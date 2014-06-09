@@ -1,13 +1,7 @@
 Polycademy's NGINX Configuration
 ================================
 
-Upstream from H5BP: [Nginx Server Configs](https://github.com/h5bp/server-configs-nginx)
-
-Minimum Version Requirement: NGINX 1.1.4
-
-NGINX configuration for Linux servers. Assumes the open source branch of NGINX, there is no NGINX plus directives. Can also work for Mac or Windows, absolute paths and some unix specific configuration need to be changed. Best to test it before deploying!
-
-This NGINX configuration works for one instance of NGINX. For multiple applications that have different global configurations in the conf.d or different mime.types or different nginx.conf, you should use some virtualisation to isolate the NGINX instances such as Docker and Dokku. However if the global configuration stays the same, and you're just adding another site to the same server, then just symlink each site's sites-available into the NGINX sites-enabled.
+Tested with: 1.7.1 (we need tests for this...)
 
 The nginx.conf file is the main configuration file for NGINX.
 

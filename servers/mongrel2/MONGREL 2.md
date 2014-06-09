@@ -48,7 +48,6 @@ SSL Configuration
 
 By default SSL configuration is disabled in the server.conf with the commented out sections. If you want to activate SSL, you need to create the certificate and key, their names must match the UUID of the Mongrel 2 server you're enabling SSL for. So if UUID of the server is "ssl_server", then the files must be `ssl_server.crt` and `ssl_server.key`.
 
-
 Multiplexing HTTP & HTTPS Traffic
 ---------------------------------
 

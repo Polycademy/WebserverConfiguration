@@ -40,12 +40,12 @@ server {
   #listen [::]:443 ssl spdy;
 
   # listen on the www host
-  server_name www.phpexample.com;
+  server_name www.fastcgi.com;
 
   # SSL Settings
   #keepalive_timeout 70;
-  #ssl_certificate      phpexample.com.crt;
-  #ssl_certificate_key  phpexample.com.key;
+  #ssl_certificate      fastcgi.com.crt;
+  #ssl_certificate_key  fastcgi.com.key;
   #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
   # OCSP Stapling (only used with SSL)
@@ -57,10 +57,10 @@ server {
   #ssl_stapling_verify on;
   #resolver 8.8.8.8 8.8.4.4 valid=300;
   #resolver_timeout 10;
-  #ssl_trusted_certificate phpexample.com.pem;
+  #ssl_trusted_certificate fastcgi.com.pem;
 
   # and redirect to the non-www host (declared below)
-  return 301 $scheme://phpexample.com$request_uri;
+  return 301 $scheme://fastcgi.com$request_uri;
 
 }
 
@@ -87,7 +87,7 @@ server {
   #listen [::]:443 ssl spdy;
 
   # The host name to respond to, map only the dev hostname to ip address on dev server
-  server_name phpexample.com;
+  server_name fastcgi.com;
 
   # Path for static files
   root /www/phpexample;
@@ -99,8 +99,8 @@ server {
 
   # SSL settings
   #keepalive_timeout 70;
-  #ssl_certificate      phpexample.com.pem;
-  #ssl_certificate_key  phpexample.com.key;
+  #ssl_certificate      fastcgi.com.pem;
+  #ssl_certificate_key  fastcgi.com.key;
   # HSTS (this makes sure that the client is using HTTPS, even for subdomains)
   #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
@@ -113,7 +113,7 @@ server {
   #ssl_stapling_verify on;
   #resolver 8.8.8.8 8.8.4.4 valid=300;
   #resolver_timeout 10;
-  #ssl_trusted_certificate phpexample.com.pem;
+  #ssl_trusted_certificate fastcgi.com.pem;
 
   # Index search file to serve if in a directory
   index index.php index.html index.htm;
@@ -193,7 +193,7 @@ server {
   #listen [::]:443 ssl spdy;
 
   # The host name to respond to, map only the dev hostname to ip address on dev server
-  server_name dev.phpexample.com;
+  server_name dev.fastcgi.com;
 
   # Path for static files
   root /www/phpexample;
@@ -205,8 +205,8 @@ server {
 
   # SSL settings
   #keepalive_timeout 70;
-  #ssl_certificate      phpexample.com.crt;
-  #ssl_certificate_key  phpexample.com.key;
+  #ssl_certificate      fastcgi.com.crt;
+  #ssl_certificate_key  fastcgi.com.key;
   #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
   # OCSP Stapling is not relevant on development servers
