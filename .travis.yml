@@ -5,15 +5,32 @@ php: [5.6]
 matrix:
   fast_finish: true
 
+addons:
+  hosts:
+    - fastcgi.com
+    - www.fastcgi.com
+    - dev.fastcgi.com
+    - proxypass.com
+    - www.proxypass.com
+    - dev.proxypass.com
+    - websocket.com
+    - www.websocket.com
+    - dev.websocket.com
+    - zmq.com
+    - www.zmq.com
+    - dev.zmq.com
+
 before_install:
   - sudo apt-get update
   - composer self-update
 
 install:
-  - sudo scripts/install_servers.sh
   - composer install --dev
+  - sudo scripts/install_servers.sh
+  - sudo scripts/install_ssl.sh
 
 before_script:
+  - sudo scripts/configure_servers.sh
   - sudo scripts/start_servers.sh
 
 script: bin/codecept run --debug

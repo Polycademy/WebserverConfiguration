@@ -7,7 +7,8 @@
         "role": "Founder and Developer"
     }],
     "require-dev": {
-        "codeception/codeception": "~2.0"
+        "codeception/codeception": "~2.0",
+        "polycademy/sslcreator": "~1.1"
     },
     "config": {
         "bin-dir": "bin/"

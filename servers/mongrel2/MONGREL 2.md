@@ -13,7 +13,7 @@ logs/ (access and error logs will be stored here)
 assets/ (static files)
 assets/index.html (default assets file)
 uploads/ (if providing uploads)
-certs/ (if providing SSL)
+ssl/ (if providing SSL)
 ```
 
 Each configuration will have to be customised for your specific project. Mainly because Mongrel 2 doesn't automatically serve static files, you need to configure it to serve files from a particular directory. When using Mongrel 2 it actually becomes quite prudent to put all your static files in just one folder which is separated from all the other files. This includes any images, CSS, and Javascript.

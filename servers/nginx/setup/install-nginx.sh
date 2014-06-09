@@ -60,6 +60,9 @@
     # * --with-debug: adds helpful logs for debugging
     # * --with-openssl: compile against newer version of open ssl
     # * --with-http_spdy_module: include the SPDY module
+
+    mkdir -p /var/cache/nginx/{client_temp,proxy_temp,fastcgi_temp,uwsgi_temp,scgi_temp}
+
     $nginx_version/configure --prefix=/etc/nginx \
     --sbin-path=/usr/sbin/nginx \
     --conf-path=/etc/nginx/nginx.conf \

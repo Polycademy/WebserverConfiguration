@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# START THE SERVERS
+
 {
 
     # Trace mode
@@ -10,9 +12,11 @@
 
     dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-    # NGINX
+    # NGINX & PHP-FPM
 
     $dir/../nginx/setup/start-nginx.sh
+    
+    ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 
     # Mongrel 2
 

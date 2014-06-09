@@ -1,12 +1,14 @@
-# Upstream PHP server, using TCP is more flexible than Domain Sockets
-# Make sure that PHP-FPM is listening on a TCP port and not a Unix Domain Socket
-upstream php_server {
+# FASTCGI.COM Example
+# This example uses PHP (php-fpm), since it is the archetypical language that uses FastCGI
 
-  # clustered PHP-FPM setups need to have a shared session solution
+# Upstream server, using TCP sockets is more flexible than Domain Sockets
+upstream fastcgi_server {
+
+  # if you have multiple upstream servers, they either have to be stateless, or have a shared session solution
   server 127.0.0.1:9000;
 
   # make sure the same client goes to the same server
-  # this will not work for internal facing applications because not the all IP is checked
+  # this will not work for internal facing applications because not all of the IP is checked
   # this is only useful if you have sessions that are not shared between backends
   # if you do not need sessions, or that your sessions are shared, then this is not required
   # its highly recommended that you should be sharing your sessions!
@@ -140,13 +142,6 @@ server {
     rewrite ^(.*)$ / permanent;
   }
 
-  # Removes the index method of every controller
-  # Changes example.com/controller/index to example.com/lol
-  # Changes example.com/controller/index/ to example.com/lol
-  if ($request_uri ~* index/?$) {
-    rewrite ^/(.*)/index/?$ /$1 permanent;
-  }
-
   # Removes any trailing slashes from uris that are not directories
   # Changes example.com/controller/ to example.com/controller
   # Thus normalising the uris
@@ -168,7 +163,7 @@ server {
   location ~* \.php$ {
     try_files $uri =404;
     include fastcgi_params;
-    fastcgi_pass php_server;
+    fastcgi_pass fastcgi_server;
     fastcgi_index index.php;
     fastcgi_intercept_errors on;
     fastcgi_hide_header x-powered-by;
@@ -196,7 +191,7 @@ server {
   server_name dev.fastcgi.com;
 
   # Path for static files
-  root /www/phpexample;
+  root /www/fastcgi.com;
 
   # Force SSL, we use $http_host as it can potentially contain the client's tunnelled port, which is often used in VMs for development
   #if ($ssl_protocol = "") {
@@ -265,7 +260,7 @@ server {
   location ~* \.php$ {
     try_files $uri =404;
     include fastcgi_params;
-    fastcgi_pass php_server;
+    fastcgi_pass fastcgi_server;
     fastcgi_index index.php;
     fastcgi_intercept_errors on;
     fastcgi_hide_header x-powered-by;

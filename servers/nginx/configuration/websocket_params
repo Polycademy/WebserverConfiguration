@@ -1,0 +1,6 @@
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+
+# Web socket proxy will time out after 60s of inactivity, make sure your web socket connection pings every 30s, or else you need to restablish connections everytime
+proxy_read_timeout 60s;

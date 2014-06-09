@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# INSTALL THE SERVERS
+
 {
 
     # Trace mode
@@ -20,6 +22,6 @@
 
     # uWSGI
 
-    #$dir/../servers/uwsgi/setup/install-uwsgi.sh --uwsgi
+    #$dir/../servers/uwsgi/setup/install-uwsgi.sh --uwsgi 2.0.5.1
 
 }

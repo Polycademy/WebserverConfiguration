@@ -3,6 +3,21 @@ Polycademy's NGINX Configuration
 
 Tested with: 1.7.1 (we need tests for this...)
 
+./applications
+--------------
+
+These are example applications.
+
+./setup
+-------
+
+These are simple bash scripts for installing this setup, mainly used for the automated tests.
+
+./configuration
+---------------
+
+This is an example layout of `/etc/nginx/`.
+
 The nginx.conf file is the main configuration file for NGINX.
 
 The mimes.types folder hosts all the mime types of files that can be served.
