@@ -1,7 +1,13 @@
 WebserverConfiguration
 ======================
 
-Web server configuration for Apache, NGINX, Mongrel 2 and uWSGI, with automated tests. WIP.s
+Web server configuration for Apache, NGINX, Mongrel 2 and uWSGI, with automated tests. WIP.
+
+The project showcases various forms of optimised web server configuration. Useful for learning, testing, experimenting or adapting into your own current web server configuration.
+
+More web servers will be added in the future.
+
+Hopefully this can highlight the differences in web servers, and what they are good for.
 
 TODO:
 ----
