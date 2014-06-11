@@ -49,3 +49,15 @@ TODO use one of:
 2. Tengine
 
 Replace NGINX. We're going to have some crazy web server configurations.
+
+OK let's try this.
+
+PER DIRECTORY NGINX configuration instead of /etc/nginx shit.
+
+See this: http://wiki.nginx.org/InstallOptions
+and this: http://wiki.nginx.org/CommandLine
+
+The point is, relative configuration should on a per project basis.
+When we compile NGINX though, it should probably be put in /usr/local/nginx or /usr/nginx.
+
+Shouldn't be using non-www-data but yourself? All you need to do is change owner of it to you!

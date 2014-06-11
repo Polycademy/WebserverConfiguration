@@ -33,7 +33,10 @@ upstream fastcgi_server {
 # Convert www to non-www redirect 
 server {
 
+    # Listen parameters specific to system calls listen() and bind() cannot be duplicated
+    listen 80;
     listen [::]:80;
+    listen 443 ssl spdy;
     listen [::]:443 ssl spdy;
 
     # listen on the www host
@@ -56,9 +59,14 @@ server {
 # Production environment
 server {
 
-    # deferred for Linux, accept_filter=httpready for FreeBSD
-    listen [::]:80 deferred;
-    listen [::]:443 ssl spdy deferred;
+    # Listen parameters specific to system calls listen() and bind() cannot be duplicated
+    # You can add `deferred` for Linux, `accept_filter=httpready` for FreeBSD during real production
+    # But they can only be used for a single address:port combo, so make sure it's used for the most
+    # important entry point!
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl spdy;
+    listen [::]:443 ssl spdy;
 
     server_name fastcgi.com;
 
@@ -132,10 +140,11 @@ server {
 # Development environment
 server {
 
-    # Listen parameters are unique to each directive, so the development environment will not have listen parameters
-    # deferred for Linux, accept_filter=httpready for FreeBSD
-    listen [::]:80 deferred;
-    listen [::]:443 ssl spdy deferred;
+    # Listen parameters specific to system calls listen() and bind() cannot be duplicated
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl spdy;
+    listen [::]:443 ssl spdy;
 
     # The host name to respond to, map only the dev hostname to ip address on dev server
     server_name dev.fastcgi.com;
