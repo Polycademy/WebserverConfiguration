@@ -42,3 +42,10 @@ TODO:
 8. Add proxy and uwsgi styles to NGINX.
 9. NGINX Cache Busting is not working. (rebuild NGINX from source)
 10. Add automated Web Server tests.
+
+TODO use one of:
+
+1. OpenResty
+2. Tengine
+
+Replace NGINX. We're going to have some crazy web server configurations.

@@ -6,8 +6,8 @@
 
 server {
 
-  listen 80 default_server;
-  listen [::]:80 default_server;
-  return 444;
+    # deferred for Linux, accept_filter=httpready for FreeBSD
+    listen [::]:80 deferred default_server;
+    return 444;
 
 }

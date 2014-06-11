@@ -8,13 +8,12 @@
 
     dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+    # Reset the NGINX configuration directory
+
+    sudo rm -rf /etc/nginx/*
+
     # Copy the NGINX configuration
 
-    sudo cp -rf $dir/../configuration/* /etc/nginx/*
-
-    # Copy the applications
-
-    sudo mkdir -p /www
-    sudo cp -rf $dir/../applications/* /www/*
+    sudo cp -rf $dir/../configuration/* /etc/nginx/
 
 }

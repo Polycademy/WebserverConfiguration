@@ -105,3 +105,12 @@ TCP Stack Tuning
 ----------------
 
 See: http://dak1n1.com/blog/12-nginx-performance-tuning
+
+Supported Protocols
+-------------------
+
+FastCGI
+Proxy
+uWSGI
+WebSocket
+(Eventually libchan)
