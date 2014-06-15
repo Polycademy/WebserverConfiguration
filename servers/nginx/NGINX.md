@@ -114,3 +114,8 @@ Proxy
 uWSGI
 WebSocket
 (Eventually libchan)
+
+Wildcard Multidomain
+--------------------
+
+If you have a wildcard multidomain certificate (the best kind), you can easily remove the whole development server block and use the same server block for production and development. All you need to do is add the the `.domain.dev` to the `server_name`.
